@@ -72,7 +72,7 @@ public class MainTest {
     //get column to print out string "a" if input is "a b" due to the column number being less than total length
     @Test
     public void testifReturnsOnlyLimitedWords() throws Exception {
-        String expected = "a " + "\n";
+        String expected = "a " + "\n" + "b";
         String actual = Wrapper.wrap("a b", 2);
         assertEquals(expected, actual);
 
@@ -88,7 +88,6 @@ public class MainTest {
     }
 
     //TODO make this work -- add spaces exception so it looks for previous space
-    //TODO also make it so that the dog shows up (stuff after the columnnumber in this example)
     @Test
     public void test8() throws Exception {
         String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";

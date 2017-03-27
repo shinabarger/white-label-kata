@@ -37,7 +37,8 @@ public class Wrapper {
                 arraylist.add(stringInput.substring(beginningofSubString, i) + "\n");
                 System.out.print(stringInput.substring(beginningofSubString, i) + "\n");
                 beginningofSubString = beginningofSubString + columnNumber;
-                if(i > length) {
+
+                if(columnNumber < length && (length-columnNumber <= columnNumber) && columnNumber != 1) {
                     arraylist.add(stringInput.substring(columnNumber, length));
                 }
             }
