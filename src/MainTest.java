@@ -27,8 +27,8 @@ public class MainTest {
     //test to see if wrapper will return a string it takes in
     @Test
     public void test1() throws Exception {
-        String expected = "string1";
-        String actual = Wrapper.wrap("string1", 0);
+        String expected = "a" + "\n" + "b" + "\n";
+        String actual = Wrapper.wrap("ab", 1);
         assertEquals(expected, actual);
 
     }
@@ -42,11 +42,11 @@ public class MainTest {
 
     }
 
-    //get method to print out string
+    //get method to print out string that's three letters long using a for loop
     @Test
     public void test3() throws Exception {
-        String expected = "apple";
-        String actual = Wrapper.wrap("apple", 1);
+        String expected = "a" + "\n" + "p" + "\n" + "p" + "\n";
+        String actual = Wrapper.wrap("app", 1);
         assertEquals(expected, actual);
 
     }
@@ -72,17 +72,27 @@ public class MainTest {
     //get column to print out string "a" if input is "a b" due to the column number being less than total length
     @Test
     public void testifReturnsOnlyLimitedWords() throws Exception {
-        String expected = "a ";
+        String expected = "a " + "\n";
         String actual = Wrapper.wrap("a b", 2);
         assertEquals(expected, actual);
 
     }
 
-    //get column to print out string "a" if input is "a b" due to the column number being less than total length
+    //test to see if it works when column length is greater than string
     @Test
     public void test7() throws Exception {
-        String expected = "a" + "\n" + "b";
+        String expected = "a b";
         String actual = Wrapper.wrap("a b", 4);
+        assertEquals(expected, actual);
+
+    }
+
+    //TODO make this work -- add spaces exception so it looks for previous space
+    //TODO also make it so that the dog shows up (stuff after the columnnumber in this example)
+    @Test
+    public void test8() throws Exception {
+        String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";
+        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 40);
         assertEquals(expected, actual);
 
     }
