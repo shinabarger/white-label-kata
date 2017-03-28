@@ -87,9 +87,26 @@ public class MainTest {
 
     }
 
-    //TODO make this work -- add spaces exception so it looks for previous space
+
     @Test
     public void test8() throws Exception {
+        String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";
+        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 40);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void test9doesitsplit() throws Exception {
+        String expected = "The quick " + "\n" +  "brown fox " + "\n" + "jumped ove" + "\n" + "r the lazy" + "\n" + " dog";
+        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 10);
+        assertEquals(expected, actual);
+
+    }
+
+    //TODO make this work -- add spaces exception so it looks for previous space
+    @Test
+    public void test9goesToPreviousSpace() throws Exception {
         String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";
         String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 40);
         assertEquals(expected, actual);
