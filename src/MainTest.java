@@ -8,14 +8,6 @@ import static org.junit.Assert.*;
 
 public class MainTest {
 
-    //setup basic testing template
-    @Test
-    public void life_the_universe_and_everything() {
-        int expected = 42;
-        int actual = Wrapper.answer();
-        assertEquals(expected, actual);
-    }
-
     @Test
     public void test0() throws Exception {
         String expected = "";
@@ -72,7 +64,7 @@ public class MainTest {
     //get column to print out string "a" if input is "a b" due to the column number being less than total length
     @Test
     public void testifReturnsOnlyLimitedWords() throws Exception {
-        String expected = "a " + "\n" + "b";
+        String expected = "a" + "\n" + "b";
         String actual = Wrapper.wrap("a b", 2);
         assertEquals(expected, actual);
 
@@ -90,28 +82,32 @@ public class MainTest {
 
     @Test
     public void test8() throws Exception {
-        String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";
-        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 40);
+        String expected = "The quick brown fox jumped over the lazy" + "\n" + "dog";
+        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 41);
         assertEquals(expected, actual);
 
     }
 
+
+    //TODO make this work -- add spaces exception so it looks for previous space
+    @Test
+    public void test9goesToPreviousSpace() throws Exception {
+        String expected = "The quick brown fox jumped over the lazy" + "\n" + "dog";
+        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 42);
+        assertEquals(expected, actual);
+
+    }
+
+
     @Test
     public void test9doesitsplit() throws Exception {
-        String expected = "The quick " + "\n" +  "brown fox " + "\n" + "jumped ove" + "\n" + "r the lazy" + "\n" + " dog";
+        String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped" + "\n" + "over" + "\n" + "the lazy" + "\n" + "dog";
         String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 10);
         assertEquals(expected, actual);
 
     }
 
-    //TODO make this work -- add spaces exception so it looks for previous space
-    @Test
-    public void test9goesToPreviousSpace() throws Exception {
-        String expected = "The quick brown fox jumped over the lazy" + "\n" + " dog";
-        String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 40);
-        assertEquals(expected, actual);
 
-    }
 
 
 }

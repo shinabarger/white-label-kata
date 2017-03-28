@@ -24,25 +24,28 @@ public class Wrapper {
         int length = stringInput.length();
 
         //find last space in sentence
-        int lastSpace = stringInput.lastIndexOf(" ");
+
 
         if (columnNumber < length) {
             int beginningOfSubString = 0;
-            int breakPoint = 0;
 
             //split up into multiple lines based on columnNumber length
             for (int i = columnNumber; i <= length; i += columnNumber) {
 
-                //add to arraylist
-                arraylist.add(stringInput.substring(beginningOfSubString, i) + "\n");
-                beginningOfSubString = beginningOfSubString + columnNumber;
+                int lastSpace = 0;
+                if (stringInput.contains(" ") && length > columnNumber) {
+                    lastSpace = (stringInput.substring(beginningOfSubString, i)).lastIndexOf(" ");
+                    arraylist.add(stringInput.substring(beginningOfSubString, (beginningOfSubString + lastSpace)) + "\n");
 
-                if (columnNumber < length && columnNumber != 1 && (length - columnNumber < columnNumber)) {
-                    arraylist.add(stringInput.substring(columnNumber, length));
+                    //TODO make nextline print work
+                    arraylist.add(stringInput.substring(lastSpace + 1, length));
 
-                } else if ((length - i) < columnNumber && columnNumber < length) {
-                    arraylist.add(stringInput.substring(i, length));
+                } else if (!stringInput.contains(" ")) { //if there are no spaces in the string whatsoever, then just split it where the column number is
+                    arraylist.add(stringInput.substring(beginningOfSubString, (beginningOfSubString + columnNumber)) + "\n");
                 }
+
+                //move beginning of substring up so it goes to the next location
+                beginningOfSubString += columnNumber;
             }
             //remove characters from arraylist to make them look normal again & assign to new string to return
             String stringofList = arraylist.toString().replace("[", "").replace(", ", "").replace("]", "");
@@ -62,9 +65,4 @@ public class Wrapper {
         return stringInput;
     }
 
-    //setup basic testing using junit
-    public static int answer() {
-
-        return 42;
-    }
 }
