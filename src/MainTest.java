@@ -19,7 +19,7 @@ public class MainTest {
     //test to see if wrapper will return a string it takes in
     @Test
     public void test1() throws Exception {
-        String expected = "a" + "\n" + "b" + "\n";
+        String expected = "a" + "\n" + "b";
         String actual = Wrapper.wrap("ab", 1);
         assertEquals(expected, actual);
 
@@ -37,7 +37,7 @@ public class MainTest {
     //get method to print out string that's three letters long using a for loop
     @Test
     public void test3() throws Exception {
-        String expected = "a" + "\n" + "p" + "\n" + "p" + "\n";
+        String expected = "a" + "\n" + "p" + "\n" + "p";
         String actual = Wrapper.wrap("app", 1);
         assertEquals(expected, actual);
 
@@ -106,6 +106,15 @@ public class MainTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void test10longerText() throws Exception {
+        String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped" + "\n" + "over" + "\n" + "the lazy" + "\n" + "dog";
+        String actual = Wrapper.wrap("Hello, World program is a computer program that outputs or displays Hello,World to the user.", 10);
+        assertEquals(expected, actual);
+
+    }
+
 
 
 

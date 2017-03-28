@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -21,56 +23,23 @@ public class Wrapper {
         //declare new arrayList for returning to test page
         ArrayList<String> arraylist = new ArrayList<>();
 
-        int length = stringInput.length();
+        //this uses WordUtils to automatically wrap all words based on the inputted column length
+        //then it adds them to an arrayList, which is used to return at the end of the method
+        arraylist.add(0, WordUtils.wrap(stringInput, columnNumber, "\n", true));
 
-        //find last space in sentence
+        //prints out same results that are added to the
+        System.out.println(WordUtils.wrap(stringInput, columnNumber, "\n", true));
 
-        if (columnNumber < length) {
-            int beginningOfSubString = 0;
+        //remove characters from arraylist to make them look normal again & assign to new string to return
+        String stringofList = arraylist.toString().replace("[", "").replace(", ", "").replace("]", "");
 
-            //split up into multiple lines based on columnNumber length
-            for (int i = columnNumber; i <= length; i += columnNumber) {
-
-                int lastSpace = 0;
-
-                if (stringInput.contains(" ") && length > columnNumber) {
-
-                    //TODO make the lastSpace index location actually refresh and increase each time the for loop goes through
-                    lastSpace = stringInput.lastIndexOf(' ', columnNumber);
-
-                    arraylist.add(stringInput.substring(beginningOfSubString, (beginningOfSubString + lastSpace)) + "\n");
-
-                    if (length - columnNumber < columnNumber) {
-                        arraylist.add(stringInput.substring(lastSpace + 1, length));
-                    } else if (length - columnNumber > columnNumber) {
-                        arraylist.add(stringInput.substring(lastSpace + 1, columnNumber));
-                    }
-
-                } else if
-                    //if there are no spaces in the string whatsoever, then just split it where the column number is
-                        (!stringInput.contains(" ")) {
-                    arraylist.add(stringInput.substring(beginningOfSubString, (beginningOfSubString + columnNumber)) + "\n");
-                }
-
-                //move beginning of substring up so it goes to the next location
-                beginningOfSubString = lastSpace + 1;
-            }
-            //remove characters from arraylist to make them look normal again & assign to new string to return
-            String stringofList = arraylist.toString().replace("[", "").replace(", ", "").replace("]", "");
-
-            return stringofList;
-        }
-        return stringInput;
+        return stringofList;
     }
 
+    //this method just tests to make sure a method can succesfully take in the columnnumber and return it if need be
     protected static int getColumnNumber(String stringInput, int columnNumber) {
 
         return columnNumber;
-    }
-
-    private static String getStringInput(String stringInput, int columnNumber) {
-
-        return stringInput;
     }
 
 }
