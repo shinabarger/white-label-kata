@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Note: You can create as many functions as you would like. But wrap should be the only public function.
  * ---
  * You can use any programming language you would like. Please create a github repository and send me a link.
- *
+ * 
  * http://codingdojo.org/cgi-bin/index.pl?KataWordWrap
  */
 
@@ -22,28 +22,31 @@ public class Wrapper {
         ArrayList<String> arraylist = new ArrayList<>();
 
         int length = stringInput.length();
-        int endOfString = length;
+
+        //find last space in sentence
         int lastSpace = stringInput.lastIndexOf(" ");
 
         if (columnNumber < length) {
             int beginningOfSubString = 0;
-            boolean isSpace = false;
+            int breakPoint = 0;
 
+            //split up into multiple lines based on columnNumber length
             for (int i = columnNumber; i <= length; i += columnNumber) {
 
+                //add to arraylist
                 arraylist.add(stringInput.substring(beginningOfSubString, i) + "\n");
                 beginningOfSubString = beginningOfSubString + columnNumber;
 
-                if (columnNumber < length  && columnNumber != 1 && (length - columnNumber < columnNumber)) {
+                if (columnNumber < length && columnNumber != 1 && (length - columnNumber < columnNumber)) {
                     arraylist.add(stringInput.substring(columnNumber, length));
 
                 } else if ((length - i) < columnNumber && columnNumber < length) {
                     arraylist.add(stringInput.substring(i, length));
                 }
             }
-
+            //remove characters from arraylist to make them look normal again & assign to new string to return
             String stringofList = arraylist.toString().replace("[", "").replace(", ", "").replace("]", "");
-            System.out.println(stringofList);
+
             return stringofList;
         }
         return stringInput;
