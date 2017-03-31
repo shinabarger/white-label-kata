@@ -101,7 +101,7 @@ public class MainTest {
 
     @Test
     public void test9doesitsplit() throws Exception {
-        String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped" + "\n" + "over" + "\n" + "the lazy" + "\n" + "dog";
+        String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped ove" + "\n" + "r the lazy" + "\n" + "dog";
         String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 10);
         assertEquals(expected, actual);
 
@@ -109,7 +109,7 @@ public class MainTest {
 
     @Test
     public void test10longerText() throws Exception {
-        String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped" + "\n" + "over" + "\n" + "the lazy" + "\n" + "dog";
+        String expected = "Hello,\nWorld prog\nram is a\ncomputer p\nrogram tha\nt outputs\nor display\ns Hello,Wo\nrld to the\nuser.";
         String actual = Wrapper.wrap("Hello, World program is a computer program that outputs or displays Hello,World to the user.", 10);
         assertEquals(expected, actual);
 
