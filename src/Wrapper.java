@@ -27,7 +27,7 @@ public class Wrapper {
         //then it adds them to an arrayList, which is used to return at the end of the method
         arraylist.add(0, WordUtils.wrap(stringInput, columnNumber, "\n", true));
 
-        //prints out same results that are added to the
+        //prints out same results that are added to the arraylist
         System.out.println(WordUtils.wrap(stringInput, columnNumber, "\n", true));
 
         //remove characters from arraylist to make them look normal again & assign to new string to return
@@ -43,3 +43,5 @@ public class Wrapper {
     }
 
 }
+
+
