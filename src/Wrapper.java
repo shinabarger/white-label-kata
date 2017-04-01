@@ -24,7 +24,7 @@ public class Wrapper {
         ArrayList<String> arraylist = new ArrayList<>();
 
         //this uses WordUtils to automatically wrap all words based on the inputted column length
-        //then it adds them to an arrayList, which is used to return at the end of the method
+        //then it adds them to an arrayList, which is returned at the end of the method
         arraylist.add(0, WordUtils.wrap(stringInput, columnNumber, "\n", true));
 
         //prints out same results that are added to the arraylist

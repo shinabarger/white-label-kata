@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class MainTest {
 
     @Test
-    public void test0() throws Exception {
+    public void noTextandZeroColumnReturnNothing() throws Exception {
         String expected = "";
         String actual = Wrapper.wrap("", 0);
         assertEquals(expected, actual);
@@ -18,7 +18,7 @@ public class MainTest {
 
     //test to see if wrapper will return a string it takes in
     @Test
-    public void test1() throws Exception {
+    public void abLengthOneReturnsAPlusB() throws Exception {
         String expected = "a" + "\n" + "b";
         String actual = Wrapper.wrap("ab", 1);
         assertEquals(expected, actual);
@@ -27,7 +27,7 @@ public class MainTest {
 
     //test to see if we can return the columnNumber if method is taking in column number
     @Test
-    public void test2() throws Exception {
+    public void string1returns0InColumnNumberMethod() throws Exception {
         int expected = 0;
         int actual = Wrapper.getColumnNumber("string1", 0);
         assertEquals(expected, actual);
@@ -36,7 +36,7 @@ public class MainTest {
 
     //get method to print out string that's three letters long using a for loop
     @Test
-    public void test3() throws Exception {
+    public void splits3LetterWordWithOneColumnWidth() throws Exception {
         String expected = "a" + "\n" + "p" + "\n" + "p";
         String actual = Wrapper.wrap("app", 1);
         assertEquals(expected, actual);
@@ -45,7 +45,7 @@ public class MainTest {
 
     //get column to print out string "a" if input is "a b" due to the column number being less than total length
     @Test
-    public void test4() throws Exception {
+    public void returnsOneLetterOneColumnTest() throws Exception {
         String expected = "a";
         String actual = Wrapper.wrap("a", 1);
         assertEquals(expected, actual);
@@ -54,7 +54,7 @@ public class MainTest {
 
     //get column to print out string "a" if input is "a b" due to the column number being less than total length
     @Test
-    public void test5() throws Exception {
+    public void createsNoNewColumnWithColumnNumberGreaterThanStringLengthTest() throws Exception {
         String expected = "a b";
         String actual = Wrapper.wrap("a b", 3);
         assertEquals(expected, actual);
@@ -72,7 +72,7 @@ public class MainTest {
 
     //test to see if it works when column length is greater than string
     @Test
-    public void test7() throws Exception {
+    public void testReturnsLimitedWordsLength4() throws Exception {
         String expected = "a b";
         String actual = Wrapper.wrap("a b", 4);
         assertEquals(expected, actual);
@@ -81,7 +81,7 @@ public class MainTest {
 
 
     @Test
-    public void test8() throws Exception {
+    public void testWrappingSentenceWith41CharacterWidth() throws Exception {
         String expected = "The quick brown fox jumped over the lazy" + "\n" + "dog";
         String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 41);
         assertEquals(expected, actual);
@@ -100,7 +100,7 @@ public class MainTest {
 
 
     @Test
-    public void test9doesitsplit() throws Exception {
+    public void test10doesItSplitCorrectly() throws Exception {
         String expected = "The quick" + "\n" +  "brown fox" + "\n" + "jumped ove" + "\n" + "r the lazy" + "\n" + "dog";
         String actual = Wrapper.wrap("The quick brown fox jumped over the lazy dog", 10);
         assertEquals(expected, actual);
@@ -108,7 +108,7 @@ public class MainTest {
     }
 
     @Test
-    public void test10longerText() throws Exception {
+    public void test11longerTextSplitCorrectly() throws Exception {
         String expected = "Hello,\nWorld prog\nram is a\ncomputer p\nrogram tha\nt outputs\nor display\ns Hello,Wo\nrld to the\nuser.";
         String actual = Wrapper.wrap("Hello, World program is a computer program that outputs or displays Hello,World to the user.", 10);
         assertEquals(expected, actual);

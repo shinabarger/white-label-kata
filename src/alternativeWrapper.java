@@ -6,10 +6,10 @@
 
 public class alternativeWrapper {
 
-    private static String wrap2(String originalStringInput, int numColsPerLine) {
+    private static String wrap2(String originalStringInput, int numberColumnsPerLine) {
 
-        // Check to make sure numColsPerLine is more than 0
-        if (numColsPerLine < 1) {
+        // Check to make sure numberColumnsPerLine is more than 0
+        if (numberColumnsPerLine < 1) {
             return "";
         }
 
@@ -30,7 +30,7 @@ public class alternativeWrapper {
                 // If the tempString contains a non-leading space, and it fits in the line From index 1 to not contain the leading space
                 if (tempString.indexOf(" ", 1) >= 0
                         && singleLine.length() + tempString.substring(0, tempString.indexOf(' ', 1)).length()
-                        <= numColsPerLine) {
+                        <= numberColumnsPerLine) {
 
                     // singleLine gets up until the space
                     singleLine += tempString.substring(0, tempString.indexOf(' ', 1));
@@ -43,7 +43,7 @@ public class alternativeWrapper {
                 // Else, if the tempString does NOT have a non-leading space, but it DOES FIT end of line
                 else if (tempString.indexOf(" ", 1) < 0
                         && singleLine.length() + tempString.length()
-                        <= numColsPerLine) {
+                        <= numberColumnsPerLine) {
 
                     // singleLine gets everything
                     singleLine += tempString;
